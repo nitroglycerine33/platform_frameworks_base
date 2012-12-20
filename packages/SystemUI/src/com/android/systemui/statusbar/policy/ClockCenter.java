@@ -16,47 +16,35 @@
 
 package com.android.systemui.statusbar.policy;
 
-import android.content.ContentResolver;
-import android.provider.Settings;
-import android.database.ContentObserver;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class CenterClock extends Clock {
+public class ClockCenter extends Clock {
 
-    protected class SettingsObserver extends ContentObserver {
-        SettingsObserver(Handler handler) {
-            super(handler);
-        }
-
-        void observe() {
-            ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_CLOCK_STYLE), false, this);
-        }
-    }
-
-    public CenterClock(Context context) {
+    public ClockCenter(Context context) {
         this(context, null);
     }
 
-    public CenterClock(Context context, AttributeSet attrs) {
+    public ClockCenter(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CenterClock(Context context, AttributeSet attrs, int defStyle) {
+    public ClockCenter(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public void updateClockVisibility(boolean show) {
-        ContentResolver resolver = mContext.getContentResolver();
-        mClockStyle = (Settings.System.getInt(resolver,Settings.System.STATUS_BAR_CLOCK_STYLE, 1));
-        if (mClockStyle == CLOCK_STYLE_CENTER)
+    public void updateVisibilityFromStatusBar(boolean show) {
+        if (mClockStyle == STYLE_CLOCK_CENTER)
             setVisibility(show ? View.VISIBLE : View.GONE);
+
+    }
+
+    protected void updateClockVisibility() {
+        if (mClockStyle == STYLE_CLOCK_CENTER)
+            setVisibility(View.VISIBLE);
         else
             setVisibility(View.GONE);
-
     }
 }

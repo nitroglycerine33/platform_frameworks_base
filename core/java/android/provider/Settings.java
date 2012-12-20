@@ -2954,17 +2954,43 @@ public final class Settings {
         * @hide
         */
         public static final String NAVIGATION_BAR_LEFTY_MODE = "navigation_bar_lefty_mode";
-
+        
         /**
-         * Whether to show the clock in status bar
+         * Whether to show the clock in status bar (tablets)
          * of the stock battery icon
          * 0: don't show the clock
          * 1: show the clock
-	 * 2: Center clock
          * default: 1
          * @hide
          */
-        public static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock_style";
+        public static final String STATUS_BAR_CLOCK = "status_bar_clock";
+
+        /**
+	* @hide
+	* AM/PM Style for clock options
+	* 0 - Normal AM/PM
+	* 1 - Small AM/PM
+	* 2 - No AM/PM
+	*/
+        public static final String STATUSBAR_CLOCK_AM_PM_STYLE = "statusbar_clock_am_pm_style";
+
+        /**
+	* @hide
+	* Style of clock
+	* 0 - Hide Clock
+	* 1 - Right Clock
+	* 2 - Center Clock
+	*/
+        public static final String STATUSBAR_CLOCK_STYLE = "statusbar_clock_style";
+
+        /**
+	* @hide
+	* Shows weekday before clock time
+	* 0 - No Day
+	* 1 - Small Day
+	* 2 - Normal Day
+	*/
+        public static final String STATUSBAR_CLOCK_WEEKDAY = "statusbar_clock_weekday";
 
         /**
          * Whether to show the signal text or signal bars.
